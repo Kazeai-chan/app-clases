@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Te Llevo App</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header class="ion-text-center">
+      <ion-card-title>¡Bienvenido!</ion-card-title>
+      <ion-card-subtitle>La mejor app para compartir vehículos</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content style="display: flex; justify-content: center;">
+      <ion-img responsive-sm style="width:80%"
+        src="https://www.mitsubishi-motors.com.pe/blog/wp-content/uploads/2020/06/auto-hatchbak-ventajas-mitsubishi.jpg"
+        alt="auto"
+      ></ion-img>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <ion-text><h2>Para usar nuestros servicios primero debe iniciar sesión</h2></ion-text>
+      <ion-item>
+        <ion-input 
+        label="Usuario" 
+        labelPlacement="floating" 
+        maxlength="8"
+        minlength="3"
+        [(ngModel)]="alumnos.usuario"
+        errorText="Ingrese más de 3 caracteres"
+        placeholder=""></ion-input>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
