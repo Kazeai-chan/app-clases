@@ -1,20 +1,68 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
+  <mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Te Llevo App</span>
+  </mat-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content [fullscreen]="true" style="--ion-background-color : #f2f2f2;">
+  <ion-card style="--ion-background-color : white;">
+    <ion-card-header class="ion-text-center">
+      <ion-card-title>¡Bienvenido!</ion-card-title>
+      <ion-card-subtitle>Estudiante: {{data.user}}</ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+  <mat-grid-list cols="2" >
+    <mat-grid-tile>
+      <mat-card #aniUno style="max-width: 90%; margin-bottom: 8px; margin-left: 8px;" color="primary">
+        <mat-card-header>
+          <div mat-card-avatar style="display: flex; justify-content: center; width: 120px;">
+            <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon">
+              <mat-icon>directions_car</mat-icon>
+            </button>
+          </div>
+          <mat-card-title>Programar viaje de retorno</mat-card-title>
+          <mat-card-subtitle>Vehículo propio</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="https://img.freepik.com/fotos-premium/automoviles-estacionados-fila-lado-calle-ciudad-brillante-dia-otono_127089-12533.jpg" alt="Vehiculo">
+        <mat-card-content>
+          <p>
+            Si cuenta con un vehículo propio puede ingresar la dirección de su viaje y el costo que
+            cobrará a las personas que llevará.
+          </p>
+        </mat-card-content>
+        <!-- <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions> -->
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile #ani2>
+      <mat-card style="max-width: 90%; margin-bottom: 8px; margin-left: 8px;" color="primary">
+        <mat-card-header>
+          <div mat-card-avatar style="display: flex; justify-content: center; width: 120px;">
+            <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon">
+              <mat-icon>person_add</mat-icon>
+            </button>
+          </div>
+          <mat-card-title>Buscar viaje de retorno</mat-card-title>
+          <mat-card-subtitle>Encontrar conductor</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="https://img.freepik.com/free-photo/smiling-woman-positive-man-sitting-car-near-lady-leaning-out-from-auto_23-2148039121.jpg?w=740&t=st=1693716042~exp=1693716642~hmac=314c36d62c770ad8a1aaed259c3b3293ef8efd02f8c0b29e19ed64e94ec9082f" alt="Vehiculo">
+        <mat-card-content>
+          <p>
+            Si no cuenta con vehículo, puede buscar un conductor que se dirija cerca 
+            de su dirección para compartir vehículo.
+          </p>
+        </mat-card-content>
+        <!-- <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions> -->
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>  
+  
 </ion-content>
