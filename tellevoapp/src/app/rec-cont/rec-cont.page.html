@@ -1,13 +1,27 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>rec_cont</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">rec_cont</ion-title>
-    </ion-toolbar>
+<form >
+  <ion-header [translucent]="true">
+    <mat-toolbar color="primary">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Te Llevo App</span>
+    </mat-toolbar>
   </ion-header>
-</ion-content>
+
+  <ion-content [fullscreen]="true" style="--ion-background-color: #f2f2f2;">
+    <ion-card style="--ion-background-color: white;">
+      <ion-card-content>
+        <ion-text><h2>Recuperar contraseña</h2></ion-text>
+
+        <mat-form-field style="display: flex; justify-content: center;">
+          <mat-label>Usuario</mat-label>
+          <input name="usuario" matInput 
+            maxlength="12"
+            minlength="3"
+            errorText="Ingrese más de 3 caracteres">
+        </mat-form-field>
+        <button mat-raised-button color="primary" style="width: 100%;" (click)="redireccionarALogin()">Recuperar contraseña</button>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+</form>
