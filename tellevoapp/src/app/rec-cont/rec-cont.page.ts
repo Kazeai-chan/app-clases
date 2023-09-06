@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-rec-cont',
@@ -7,11 +8,18 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./rec-cont.page.scss'],
 })
 export class RecContPage implements OnInit {
-  constructor(private navCtrl: NavController) {}
+  constructor(private navCtrl: NavController
+    ,private router: Router,) {}
   usuario = '';
 
   redireccionarALogin() {
-      this.navCtrl.navigateForward('/login');
+    let navigationExtras: NavigationExtras = {
+      state: {
+        user: this.usuario
+      }
+    };
+    this.router.navigate(['/login'], navigationExtras);
+    //this.navCtrl.navigateForward('/login');
   }
 
   ngOnInit() {

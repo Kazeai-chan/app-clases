@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationExtras } from '@angular/router';
+import { Router, NavigationExtras ,ActivatedRoute} from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
 @Component({
@@ -14,12 +14,22 @@ export class LoginPage implements OnInit {
     password: "12345"
   }
 
+  user:any;
+
   hide = true;
 
   constructor(
     private router: Router,
     public alertController: AlertController,
-  ) { }
+    private activeroute: ActivatedRoute,
+  ) { 
+    this.activeroute.queryParams.subscribe(params => { // Utilizamos lambda
+      this.user = this.router.getCurrentNavigation()!.extras.state; // Si tiene extra rescata lo enviado
+      if(this.user){
+        this.alumnos.usuario= String(this.user.user);
+      }
+    });
+  }
 
   ngOnInit() {
   }

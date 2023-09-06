@@ -18,6 +18,7 @@
           <input name="usuario" matInput 
             maxlength="12"
             minlength="3"
+            [(ngModel)]="usuario"
             errorText="Ingrese más de 3 caracteres">
         </mat-form-field>
         <button mat-raised-button color="primary" style="width: 100%;" (click)="redireccionarALogin()">Recuperar contraseña</button>
