@@ -64,10 +64,6 @@ export class HomePage {
   async play() {
     await this.animation.play();
     await this.animatione.play();
-    await this.animation.play();
-    await this.animatione.play();
-    await this.animation.play();
-    await this.animatione.play();
   }
 
 }

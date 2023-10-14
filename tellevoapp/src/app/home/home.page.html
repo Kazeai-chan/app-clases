@@ -14,11 +14,11 @@
       <ion-card-subtitle>Estudiante: {{data.user}}</ion-card-subtitle>
     </ion-card-header>
   </ion-card>
-  <mat-grid-list cols="2" >
+  <mat-grid-list cols="2" rowHeight="2:4" >
     <mat-grid-tile>
       <mat-card #aniUno style="max-width: 90%; margin-bottom: 8px; margin-left: 8px;" color="primary">
-        <mat-card-header>
-          <div mat-card-avatar style="display: flex; justify-content: center; width: 120px;">
+        <mat-card-header >
+          <div mat-card-avatar style="display: flex; justify-content: center;">
             <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon">
               <mat-icon>directions_car</mat-icon>
             </button>
@@ -26,8 +26,9 @@
           <mat-card-title>Programar viaje de retorno</mat-card-title>
           <mat-card-subtitle>Vehículo propio</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image src="https://img.freepik.com/fotos-premium/automoviles-estacionados-fila-lado-calle-ciudad-brillante-dia-otono_127089-12533.jpg" alt="Vehiculo">
+      
         <mat-card-content>
+          <img mat-card-image style="object-fit: cover;" src="https://img.freepik.com/fotos-premium/automoviles-estacionados-fila-lado-calle-ciudad-brillante-dia-otono_127089-12533.jpg" alt="Vehiculo">
           <p>
             Si cuenta con un vehículo propio puede ingresar la dirección de su viaje y el costo que
             cobrará a las personas que llevará.
@@ -41,8 +42,8 @@
     </mat-grid-tile>
     <mat-grid-tile #ani2>
       <mat-card style="max-width: 90%; margin-bottom: 8px; margin-left: 8px;" color="primary">
-        <mat-card-header>
-          <div mat-card-avatar style="display: flex; justify-content: center; width: 120px;">
+        <mat-card-header >
+          <div mat-card-avatar style="display: flex; justify-content: center">
             <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon">
               <mat-icon>person_add</mat-icon>
             </button>
@@ -50,8 +51,8 @@
           <mat-card-title>Buscar viaje de retorno</mat-card-title>
           <mat-card-subtitle>Encontrar conductor</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image src="https://img.freepik.com/free-photo/smiling-woman-positive-man-sitting-car-near-lady-leaning-out-from-auto_23-2148039121.jpg?w=740&t=st=1693716042~exp=1693716642~hmac=314c36d62c770ad8a1aaed259c3b3293ef8efd02f8c0b29e19ed64e94ec9082f" alt="Vehiculo">
         <mat-card-content>
+          <img mat-card-image style="object-fit: cover;" src="https://img.freepik.com/free-photo/smiling-woman-positive-man-sitting-car-near-lady-leaning-out-from-auto_23-2148039121.jpg?w=740&t=st=1693716042~exp=1693716642~hmac=314c36d62c770ad8a1aaed259c3b3293ef8efd02f8c0b29e19ed64e94ec9082f" alt="Vehiculo">
           <p>
             Si no cuenta con vehículo, puede buscar un conductor que se dirija cerca 
             de su dirección para compartir vehículo.
