@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Te Llevo App</span>
+  </mat-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card class="ion-text-center">
+    <ion-card-title #bienve>
+      Bienvenido a buscar tu viaje!
+    </ion-card-title>
+    <ion-card-subtitle>
+      Selecciona el Vehìculo que te acomode
+    </ion-card-subtitle>
+    <!-- <p>Usuario: </p> -->
+  </ion-card>
+  <ion-segment [(ngModel)]="segment" value="default">
+    <ion-segment-button value="lista">
+      <ion-label>Listado</ion-label>
+      <ion-icon name="list"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="map" [disabled]="true">
+      <ion-label>Mapa (en construcción)</ion-label>
+      <ion-icon name="map"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+  <container-element [ngSwitch]="segment">
+    <app-listado *ngSwitchCase="'lista'"></app-listado>
+  </container-element>
+</ion-content>

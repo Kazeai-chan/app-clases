@@ -66,6 +66,10 @@ export class HomePage {
     await this.animatione.play();
   }
 
+  botonViajes(){
+    this.router.navigate(['/viajes']);
+  }
+
 }
 
 

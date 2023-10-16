@@ -1,0 +1,28 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title class="ion-text-center">
+      Viajes Disponibles
+    </ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <mat-card *ngFor="let viaje of viajes">
+      <mat-card-header>
+        <mat-card-title>
+          Auto con {{viaje.usuario}}
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <img alt="autito" style="max-width: 40%;" src="https://cdn.icon-icons.com/icons2/577/PNG/256/ExecutiveCar_Black_icon-icons.com_54904.png" />
+        <div>
+          <p>Comuna: {{viaje.comuna}}</p>
+          <p>Dirección Final: {{viaje.direccion}}</p>
+          <p>Puestos Totales: {{viaje.puestos}}</p>
+          <p>Puestos Libres: {{viaje.libres}}</p>
+          <p>Precio: {{viaje.precio}}</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+  </ion-card-content>
+
+</ion-card>

@@ -22,7 +22,13 @@ const routes: Routes = [
     path: 'rec-cont',
     loadChildren: () => import('./rec-cont/rec-cont.module').then( m => m.RecContPageModule)
   },
+  {
+    path: 'viajes',
+    loadChildren: () => import('./viajes/viajes.module').then( m => m.ViajesPageModule)
+  },
+
   { path: '**', component: PageNotFoundComponent },
+
 ];
 
 @NgModule({
