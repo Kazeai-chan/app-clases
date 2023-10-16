@@ -10,9 +10,8 @@
   <ion-card class="primeraSeccion">
     <ion-text class="titulo">Páginas disponibles</ion-text>
     <ion-list>
-      <ion-item button>Recuperar contraseña</ion-item>
-      <ion-item button>Inicio de sesión</ion-item>
-      <ion-item button>Home</ion-item>
+      <ion-item button (click)="volverPagina('rec-cont')">Recuperar contraseña</ion-item>
+      <ion-item button (click)="volverPagina('login')">Inicio de sesión</ion-item>
     </ion-list>
   </ion-card>
 </ion-content>
