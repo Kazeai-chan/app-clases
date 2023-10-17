@@ -1,4 +1,5 @@
-import { Component, OnInit ,ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router'; // Importa ActivatedRoute
 import { ListadoComponent } from '../listado/listado.component';
 
 @Component({
@@ -7,17 +8,21 @@ import { ListadoComponent } from '../listado/listado.component';
   styleUrls: ['./viajes.page.scss'],
 })
 export class ViajesPage implements OnInit {
+  user: any;
 
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute) {
+  }
 
   @ViewChild(ListadoComponent) listado!: ListadoComponent;
 
-  ionViewWillEnter(){
+  ionViewWillEnter() {
+    this.user = this.activatedRoute.snapshot.params['username'];
+    console.log(this.user); 
     this.listado.getViajes();
   }
 
   ngOnInit() {
   }
-  segment = 'lista';
 
+  segment = 'lista';
 }
