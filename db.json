@@ -30,18 +30,30 @@
       "usuario": "Juan Perez",
       "comuna": "San Bernardo",
       "direccion": "San Pablo 335",
-      "puestos":4,
-      "libres":4,
-      "precio":5000
+      "hora": "20:00",
+      "puestos": 4,
+      "libres": 4,
+      "precio": 5000
     },
     {
       "id": 2,
       "usuario": "María Prado",
       "comuna": "La Florida",
       "direccion": "francisco juan 556",
-      "puestos":3,
-      "libres":3,
-      "precio":4000
+      "hora": "15:30",
+      "puestos": 3,
+      "libres": 3,
+      "precio": 4000
+    },
+    {
+      "id": 3,
+      "usuario": "Juan",
+      "comuna": "Las Condes",
+      "direccion": "San Martin",
+      "hora": "13:20",
+      "puestos": 4,
+      "libres": 0,
+      "precio": 5000
     }
   ]
 }

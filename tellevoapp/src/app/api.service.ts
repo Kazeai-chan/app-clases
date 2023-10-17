@@ -40,7 +40,7 @@ export class ApiService {
     return this.http.put(this.apiURL+'/viajes/'+id,post,this.httpOptions).pipe(retry(3)); 
   }
 
-  deletePost(id: number):Observable<any>{ 
+  deleteViaje(id: number):Observable<any>{ 
     return this.http.delete(this.apiURL+'/viajes/'+id,this.httpOptions); 
   }
 
