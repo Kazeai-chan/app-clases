@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationExtras ,ActivatedRoute} from '@angular/router';
+import { Router, NavigationExtras} from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,49 +9,43 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
-  alumnos = {
-    usuario: "Vale",
-    password: "12345"
-  }
-
-  user:any;
-
+  alumnos: any = {
+    username: '', // Inicializa con un valor predeterminado
+    password: '', // Inicializa con un valor predeterminado
+  };
   hide = true;
 
   constructor(
     private router: Router,
     public alertController: AlertController,
-    private activeroute: ActivatedRoute,
-  ) { 
-    this.activeroute.queryParams.subscribe(params => { // Utilizamos lambda
-      this.user = this.router.getCurrentNavigation()!.extras.state; // Si tiene extra rescata lo enviado
-      if(this.user){
-        this.alumnos.usuario= String(this.user.user);
-      }
-    });
-  }
+    private authservice: AuthService
+  ) {}
 
   ngOnInit() {
+    // Obtén la lista de alumnos del servicio y utiliza el primer elemento
+    const firstAlumno = this.authservice.getAlumnos()[0];
+    this.alumnos.username = firstAlumno.username;
+    this.alumnos.password = firstAlumno.password;
   }
 
   ingresar() {
-    if (this.valida() == true) {
-      let navigationExtras: NavigationExtras = {
-        state: {
-          user: this.alumnos.usuario
-        }
-      };
-      this.router.navigate(['/home'], navigationExtras);
+    if (this.valida() === true) {
+      this.router.navigate(['/home'], {
+        queryParams: {
+          username: this.alumnos.username,
+          password: this.alumnos.password,
+        },
+        state: { user: this.alumnos.username, password: this.alumnos.password },
+      });
     }
   }
 
   valida() {
-    if (this.alumnos.usuario.trim().length > 3 && this.alumnos.password.trim().length > 4) {
-      return true
+    if (this.alumnos.username.trim().length > 3 && this.alumnos.password.trim().length > 4) {
+      return true;
     } else {
-      this.presentAlert("Error", "Debe ingresar un nombre de usuario y una contraseña válida")
-      return false
+      this.presentAlert('Error', 'Debe ingresar un nombre de usuario y una contraseña válida');
+      return false;
     }
   }
 
@@ -58,7 +53,7 @@ export class LoginPage implements OnInit {
     const alert = await this.alertController.create({
       header: titulo,
       message: message,
-      buttons: ['OK']
+      buttons: ['OK'],
     });
 
     await alert.present();

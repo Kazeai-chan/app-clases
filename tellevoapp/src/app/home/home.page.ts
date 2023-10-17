@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChildren, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import type { Animation } from '@ionic/angular';
 import { AnimationController, IonCard } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 
 
 @Component({
@@ -18,15 +19,20 @@ export class HomePage {
   private animation!: Animation;
   private animatione!: Animation;
 
+  user: any;
   data: any; // Generamos una variable Any (permite cualquier valor)
 
-  constructor(private activeroute: ActivatedRoute, private router: Router, private animationCtrl: AnimationController) {
-    // Se llama a la ruta activa y se obtiene sus parametros mediante una subscripcion
-    this.activeroute.queryParams.subscribe(params => { // Utilizamos lambda
-      if (this.router.getCurrentNavigation()!.extras.state) { // Validamos que en la navegacion actual tenga extras
-        this.data = this.router.getCurrentNavigation()!.extras.state; // Si tiene extra rescata lo enviado
-        console.log(this.data) // Muestra por consola lo traido
-      }else{this.router.navigate(["/login"])} // Si no tiene extra la navegacion actual navegar al login
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private animationCtrl: AnimationController, private navCtrl: NavController) {
+    // Se llama a la ruta activa y se obtienen sus parámetros mediante una suscripción
+    this.activatedRoute.queryParams.subscribe(params => {
+      if (this.router.getCurrentNavigation()?.extras.state) { // Utilizamos el operador '?'
+        this.data = this.router.getCurrentNavigation()?.extras.state; // Utilizamos el operador '?'
+        this.user = this.data.user;
+        console.log(this.data); // Muestra por consola lo que se trajo
+
+      } else {
+        this.router.navigate(['/login']); // Si no tiene extras, navega a la página de inicio de sesión
+      }
     });
   }
 
@@ -66,8 +72,8 @@ export class HomePage {
     await this.animatione.play();
   }
 
-  botonViajes(){
-    this.router.navigate(['/viajes']);
+  botonViajes() {
+    this.navCtrl.navigateForward(`/viajes/${this.user}`);
   }
 
   botonVehiculos(){
