@@ -26,8 +26,12 @@ const routes: Routes = [
     path: 'viajes',
     loadChildren: () => import('./viajes/viajes.module').then( m => m.ViajesPageModule)
   },
-
+  {
+    path: 'vehiculos',
+    loadChildren: () => import('./vehiculos/vehiculos.module').then( m => m.VehiculosPageModule)
+  },
   { path: '**', component: PageNotFoundComponent },
+
 
 ];
 

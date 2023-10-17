@@ -70,6 +70,10 @@ export class HomePage {
     this.router.navigate(['/viajes']);
   }
 
+  botonVehiculos(){
+    this.router.navigate(['/vehiculos']);
+  }
+
 }
 
 

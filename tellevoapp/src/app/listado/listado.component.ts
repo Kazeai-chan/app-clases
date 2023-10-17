@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
 import { ApiService } from '../api.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-listado',
@@ -32,7 +33,7 @@ export class ListadoComponent  implements OnInit {
     precio:"",
   };
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, public alertController: AlertController) { }
   ionViewWillEnter(){
     this.getViajes();
   }
@@ -46,6 +47,33 @@ export class ListadoComponent  implements OnInit {
     },(error)=>{ 
       console.log(error); 
   });
+  }
+
+  Reserva(viajee:any){
+    this.viaje=viajee
+    if(this.viaje.libres>0){
+      this.viaje.libres=this.viaje.libres-1;
+      this.api.updateViaje(this.viaje.id,this.viaje).subscribe((data)=>{
+        console.log(data); 
+        this.getViajes();
+        this.presentAlert("Correcto","Viaje reservado")
+      },error=>{ 
+        console.log(error); 
+      });
+    }else{
+      this.presentAlert("Error","Sin cupos disponibles")
+    }
+      
+  }
+
+  async presentAlert(titulo:string,message:string) {
+    const alert = await this.alertController.create({
+      header: titulo,
+      message: message,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
 }

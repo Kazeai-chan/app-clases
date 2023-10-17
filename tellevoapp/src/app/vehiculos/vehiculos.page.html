@@ -1,0 +1,111 @@
+<ion-header [translucent]="true">
+  <mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Te Llevo App</span>
+  </mat-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card class="ion-text-center">
+    <ion-card-title>
+      Bienvenido a programar tu viaje!
+    </ion-card-title>
+    <ion-card-subtitle>
+      Ingrese los datos de su vehiculo y viaje
+    </ion-card-subtitle>
+    <!-- <p>Usuario: </p> -->
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        Ingrese los siguientes datos
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-input
+          label="Nombre del dueño" 
+          class="ion-text-end"
+          [(ngModel)]="viaje.usuario"
+          placeholder="Ingrese nombre">
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          label="Comuna final" 
+          class="ion-text-end"
+          [(ngModel)]="viaje.comuna"
+          placeholder="Ingrese comuna">
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          label="Dirección final" 
+          class="ion-text-end"
+          [(ngModel)]="viaje.direccion"
+          placeholder="Ingrese dirección">
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          label="Hora del viaje" 
+          type="time"
+          class="ion-text-end"
+          [(ngModel)]="viaje.hora">
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          label="Puestos totales" 
+          class="ion-text-end"
+          [(ngModel)]="viaje.puestos"
+          placeholder="0"
+          min="0"
+          max="6"
+          type="number">
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          label="Precio" 
+          class="ion-text-end"
+          [(ngModel)]="viaje.precio"
+          placeholder="$2.000"
+          min="0"
+          type="number">
+        </ion-input>
+      </ion-item>
+    </ion-card-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col><ion-button (click)="limpiar()" shape="round" expand="block">Limpiar</ion-button></ion-col>
+        <ion-col><ion-button (click)="createViaje()" shape="round" expand="block">Guardar</ion-button></ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+  <ion-card>
+    <ion-list-header>
+      <ion-title>Mis viajes programados</ion-title>
+    </ion-list-header>   
+    <ion-list *ngFor="let viaje of viajes">  
+      <ion-item>
+        <ion-label>
+          <h4>Viaje a {{viaje.comuna}}</h4>
+          <p>Dirección Final: {{viaje.direccion}}</p>
+          <p>Hora Viaje: {{viaje.hora}}</p>
+          <p>Puestos Totales: {{viaje.puestos}}</p>
+          <p>Puestos Libres: {{viaje.libres}}</p>
+          <p>Precio: {{viaje.precio}}</p>
+        </ion-label>
+        <ion-button (click)="BorraViaje(viaje)">
+          <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+        </ion-button>
+        <ion-button (click)="TraeViaje(viaje)">
+          <ion-icon name="create"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>
