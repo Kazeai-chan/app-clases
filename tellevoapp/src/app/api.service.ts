@@ -14,7 +14,7 @@ export class ApiService {
     }) 
   }
   // Se establece la base url del API a consumir 
-  apiURL = 'http://192.168.0.15:3000'//'https://jsonplaceholder.typicode.com';
+  apiURL = 'http://192.168.1.138:3000'//'https://jsonplaceholder.typicode.com';
 
   constructor(private http:HttpClient) { }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-not-found',
@@ -10,8 +11,12 @@ import { IonicModule } from '@ionic/angular';
 })
 export class PageNotFoundComponent  implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {}
-
+  volverPagina(pagina: string) {
+    this.router.navigate([pagina]).then(() => {
+      history.replaceState(null, '', pagina);
+    });
+  }
 }
