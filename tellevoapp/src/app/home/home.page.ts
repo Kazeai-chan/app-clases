@@ -85,7 +85,7 @@ export class HomePage {
   }
 
   botonViajes() {
-    this.navCtrl.navigateForward(`/viajes/${this.user}`);
+    this.navCtrl.navigateForward(`/viajes`);
   }
 
   botonVehiculos(){

@@ -31,13 +31,6 @@ export class LoginPage implements OnInit {
   ingresar() {
     if (this.valida() === true) {
       this.router.navigate(['/home'])
-      //this.router.navigate(['/home'], {
-      //   queryParams: {
-      //     username: this.alumnos.username,
-      //     password: this.alumnos.password,
-      //   },
-        //state: { user: this.alumnos.username, password: this.alumnos.password },
-      //});
     }
   }
 

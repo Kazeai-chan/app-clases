@@ -27,9 +27,7 @@ export class ViajesPage implements OnInit {
   @ViewChild(ListadoComponent) listado!: ListadoComponent;
 
   ionViewWillEnter() {
-    //this.user = this.activatedRoute.snapshot.params['username'];
     this.usuario=this.authservice.user;
-    console.log(this.user); 
     this.listado.getViajes();
   }
 

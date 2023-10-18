@@ -24,7 +24,7 @@ const routes: Routes = [
     loadChildren: () => import('./rec-cont/rec-cont.module').then( m => m.RecContPageModule)
   },
   {
-    path: 'viajes/:username',
+    path: 'viajes',
     loadChildren: () => import('./viajes/viajes.module').then( m => m.ViajesPageModule)
   },
   {
