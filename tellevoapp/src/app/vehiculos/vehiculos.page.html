@@ -1,9 +1,13 @@
-<ion-header [translucent]="true">
+<ion-header>
   <mat-toolbar color="primary">
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
     </button>
     <span>Te Llevo App</span>
+    <span class="example-spacer"></span>
+    <button (click)="VHome()" mat-icon-button class="example-icon favorite-icon" aria-label="volver">
+      <mat-icon>home</mat-icon>
+    </button>
   </mat-toolbar>
 </ion-header>
 
@@ -28,7 +32,8 @@
         <ion-input
           label="Nombre del dueño" 
           class="ion-text-end"
-          [(ngModel)]="viaje.usuario"
+          [(ngModel)]="usuario.nombre"
+          disabled="true"
           placeholder="Ingrese nombre">
         </ion-input>
       </ion-item>

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router'; // Importa ActivatedRoute
+import { ActivatedRoute, Router } from '@angular/router'; // Importa ActivatedRoute
 import { ListadoComponent } from '../listado/listado.component';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-viajes',
@@ -9,14 +10,25 @@ import { ListadoComponent } from '../listado/listado.component';
 })
 export class ViajesPage implements OnInit {
   user: any;
+  usuario: any;
 
-  constructor(private activatedRoute: ActivatedRoute) {
+  constructor(
+    private activatedRoute: ActivatedRoute
+    ,private authservice: AuthService
+    , private router: Router) {
+    this.usuario=this.authservice.user;
+    if(this.usuario!){
+      console.log(this.usuario)
+    } else {
+      this.router.navigate(['/login']); // Si no tiene extras, navega a la página de inicio de sesión
+    }
   }
 
   @ViewChild(ListadoComponent) listado!: ListadoComponent;
 
   ionViewWillEnter() {
-    this.user = this.activatedRoute.snapshot.params['username'];
+    //this.user = this.activatedRoute.snapshot.params['username'];
+    this.usuario=this.authservice.user;
     console.log(this.user); 
     this.listado.getViajes();
   }
@@ -25,4 +37,8 @@ export class ViajesPage implements OnInit {
   }
 
   segment = 'lista';
+
+  VHome(){
+    this.router.navigate(['/home']);
+  }
 }

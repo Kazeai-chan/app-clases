@@ -14,7 +14,7 @@ export class ApiService {
     }) 
   }
   // Se establece la base url del API a consumir 
-  apiURL = 'http://192.168.1.138:3000'//'https://jsonplaceholder.typicode.com';
+  apiURL = 'http://192.168.0.15:3000'//'https://jsonplaceholder.typicode.com';
 
   constructor(private http:HttpClient) { }
 
@@ -26,6 +26,12 @@ export class ApiService {
 
   getViaje(id: number):Observable<any>{ 
     return this.http.get(this.apiURL+'/viajes/'+id).pipe( 
+      retry(3) 
+    ); 
+  };
+
+  getUsuario(username: string):Observable<any>{ 
+    return this.http.get(this.apiURL+'/usuarios/'+username).pipe( 
       retry(3) 
     ); 
   };

@@ -1,27 +1,18 @@
 {
-  "users": [
+  "usuarios": [
     {
-      "id": 1,
-      "name": "Leanne Graham",
-      "username": "Bret",
-      "email": "Sincere@april.biz",
-      "address": {
-        "street": "Kulas Light",
-        "suite": "Apt. 556",
-        "city": "Gwenborough",
-        "zipcode": "92998-3874",
-        "geo": {
-          "lat": "-37.3159",
-          "lng": "81.1496"
-        }
-      },
-      "phone": "1-770-736-8031 x56442",
-      "website": "hildegard.org",
-      "company": {
-        "name": "Romaguera-Crona",
-        "catchPhrase": "Multi-layered client-server neural-net",
-        "bs": "harness real-time e-markets"
-      }
+      "id": "Vale",
+      "iduser": 1,
+      "nombre": "Valeria Hernandez",
+      "email": "vale@duocuc.cl",
+      "comuna": "Santiago"
+    },
+    {
+      "id": "Nacho",
+      "iduser": 2,
+      "nombre": "Ignacio Ramos",
+      "email": "nacho@duocuc.cl",
+      "comuna": "La Florida"
     }
   ],
   "viajes": [
@@ -53,6 +44,16 @@
       "hora": "13:20",
       "puestos": 4,
       "libres": 0,
+      "precio": 5000
+    },
+    {
+      "id": 4,
+      "usuario": "Valeria Hernandez",
+      "comuna": "Santiago",
+      "direccion": "San 89",
+      "hora": "13:30",
+      "puestos": 3,
+      "libres": 2,
       "precio": 5000
     }
   ]

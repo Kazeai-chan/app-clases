@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from '../api.service';
 import { AlertController } from '@ionic/angular';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-vehiculos',
@@ -10,6 +13,14 @@ import { AlertController } from '@ionic/angular';
 export class VehiculosPage implements OnInit {
 
   viajes:any;
+  viajeUsu:any;
+  usuario:any={
+    id:null,
+    name:"",
+    user:"",
+    email:"",
+    comuna:"",
+  }
   viaje:any={
     id:null,
     usuario:"",
@@ -21,7 +32,20 @@ export class VehiculosPage implements OnInit {
     precio:"",
   };
 
-  constructor(private api: ApiService, public alertController: AlertController) { }
+  constructor(
+    private api: ApiService
+    , public alertController: AlertController
+    ,private authservice: AuthService
+    , private router: Router) 
+    { 
+      this.usuario.user=this.authservice.user;
+      if(this.usuario.user!){
+        console.log(this.usuario.user)
+      } else {
+        this.router.navigate(['/login']); // Si no tiene extras, navega a la página de inicio de sesión
+      }
+    }
+
 
   ionViewWillEnter(){
     this.getViajes();
@@ -35,8 +59,19 @@ export class VehiculosPage implements OnInit {
     }
   }
 
+  traeNombre(){
+    this.usuario.user=this.authservice.user;
+    console.log(this.usuario.user)
+    this.api.getUsuario(this.usuario.user).subscribe((res)=>{
+      this.usuario=res;
+    },(error)=>{ 
+      console.log(error); 
+  });
+  }
+
   createViaje(){ 
     if(this.viaje.id==null){
+      this.viaje.usuario = this.usuario.nombre
       if(this.viaje.usuario!
         &&this.viaje.comuna!
         &&this.viaje.direccion!
@@ -69,9 +104,29 @@ export class VehiculosPage implements OnInit {
     }
   }
 
+  // var newData = filterData('Mumbai');
+
+  // function filterData(locationName) {
+  //   return data.filter(object => {
+  //     return object['name'] == locationName;
+  //   });
+  // }
+  
+
   getViajes(){
+    this.traeNombre()
     this.api.getViajes().subscribe((res)=>{
-      this.viajes=res;
+      // this.viajes=res.filter(item => {
+      this.viajes = res.filter( (row:any) => {
+        if(row.usuario == this.usuario.nombre) {
+          console.log('prueba:'+row.usuario);
+          return true
+        } else {
+          console.log('prueba:'+row.usuario+' vs '+this.usuario.nombre);
+          return false;
+        }
+      });
+      //this.viajeUsu = this.viajes.filter(this.filtrarPorUser);
       this.viajes.reverse();
     },(error)=>{ 
       console.log(error); 
@@ -100,6 +155,10 @@ export class VehiculosPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  VHome(){
+    this.router.navigate(['/home']);
   }
 
 }

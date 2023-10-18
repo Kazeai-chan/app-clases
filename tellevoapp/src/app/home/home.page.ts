@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import type { Animation } from '@ionic/angular';
 import { AnimationController, IonCard } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -21,19 +22,30 @@ export class HomePage {
 
   user: any;
   data: any; // Generamos una variable Any (permite cualquier valor)
+  usuario:any;
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router, private animationCtrl: AnimationController, private navCtrl: NavController) {
+  constructor(
+    private activatedRoute: ActivatedRoute, 
+    private router: Router, 
+    private animationCtrl: AnimationController, 
+    private navCtrl: NavController ,
+    private authservice: AuthService) {
     // Se llama a la ruta activa y se obtienen sus parámetros mediante una suscripción
-    this.activatedRoute.queryParams.subscribe(params => {
-      if (this.router.getCurrentNavigation()?.extras.state) { // Utilizamos el operador '?'
-        this.data = this.router.getCurrentNavigation()?.extras.state; // Utilizamos el operador '?'
-        this.user = this.data.user;
-        console.log(this.data); // Muestra por consola lo que se trajo
-
+    //this.activatedRoute.queryParams.subscribe(params => {
+      // if (this.router.getCurrentNavigation()?.extras.state) { // Utilizamos el operador '?'
+      //   this.data = this.router.getCurrentNavigation()?.extras.state; // Utilizamos el operador '?'
+      //   this.user = this.data.user;
+      //   console.log(this.data); // Muestra por consola lo que se trajo
+      this.usuario=this.authservice.user;
+      if(this.usuario!){
+        console.log(this.data)
       } else {
         this.router.navigate(['/login']); // Si no tiene extras, navega a la página de inicio de sesión
       }
-    });
+    //});
+  }
+  ionViewWillEnter(){
+    this.usuario=this.authservice.user;
   }
 
   ngAfterViewInit() {

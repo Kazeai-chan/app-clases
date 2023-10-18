@@ -21,7 +21,8 @@ export class HomeGuard implements CanActivate {
 
     const userAuthenticated = this.authservice.alumnos.some(alumno => alumno.username === username && alumno.password === password);
 
-    if (userAuthenticated) {
+    //if (userAuthenticated) {
+    if (this.authservice.validaUser()) {
       return true; 
     } else {
       this.presentAlert();

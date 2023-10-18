@@ -1,9 +1,13 @@
-<ion-header [translucent]="true">
+<ion-header>
   <mat-toolbar color="primary">
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
     </button>
     <span>Te Llevo App</span>
+    <span class="example-spacer"></span>
+    <button (click)="VHome()" mat-icon-button class="example-icon favorite-icon" aria-label="volver">
+      <mat-icon>home</mat-icon>
+    </button>
   </mat-toolbar>
 </ion-header>
 
@@ -15,7 +19,7 @@
     <ion-card-subtitle>
       Selecciona el Vehìculo que te acomode
     </ion-card-subtitle>
-    <p>Usuario: {{ user }} </p>
+    <p>Usuario: {{ usuario }} </p>
 
   </ion-card>
   <ion-segment [(ngModel)]="segment" value="default">
