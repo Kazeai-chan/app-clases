@@ -22,6 +22,10 @@ export class AuthService {
     console.log(this.user)
   }
 
+  guardaUser(user:string){
+    this.user=user;
+  }
+
   validaUser(){
     if(this.alumnos.some(alumno => alumno.username === this.user && alumno.password === this.contra)){
       console.log('paso');

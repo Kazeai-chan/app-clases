@@ -1,5 +1,5 @@
 <form >
-  <ion-header [translucent]="true">
+  <ion-header>
     <mat-toolbar color="primary">
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
         <mat-icon>menu</mat-icon>
@@ -15,7 +15,7 @@
 
         <mat-form-field style="display: flex; justify-content: center;">
           <mat-label>Usuario</mat-label>
-          <input name="usuario" matInput 
+          <input matInput name="usuario"
             maxlength="12"
             minlength="3"
             [(ngModel)]="usuario"

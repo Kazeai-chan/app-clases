@@ -44,6 +44,11 @@ export class LoginPage implements OnInit {
     }
   }
 
+  recupera(){
+    this.authservice.guardaUser(this.alumnos.username)
+    this.router.navigate(['/rec-cont']);
+  }
+
   async presentAlert(titulo: string, message: string) {
     const alert = await this.alertController.create({
       header: titulo,
