@@ -55,6 +55,16 @@
       "puestos": 3,
       "libres": 2,
       "precio": 5000
+    },
+    {
+      "id": 5,
+      "usuario": "Ignacio Ramos",
+      "comuna": "San Miguel",
+      "direccion": "blabla 30",
+      "hora": "01:00",
+      "puestos": 2,
+      "libres": 2,
+      "precio": 5000
     }
   ]
 }
