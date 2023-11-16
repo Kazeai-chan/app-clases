@@ -10,7 +10,7 @@ describe('PageNotFoundComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ PageNotFoundComponent ],
+      //declarations: [ PageNotFoundComponent ],
       imports: [IonicModule.forRoot(),HttpClientTestingModule]
     }).compileComponents();
 
