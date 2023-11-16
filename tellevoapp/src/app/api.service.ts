@@ -14,7 +14,7 @@ export class ApiService {
     }) 
   }
   // Se establece la base url del API a consumir 
-  apiURL = 'http://192.168.0.15:3000';
+  apiURL = 'http://localhost:3000';//'http://192.168.0.15:3000';
 
   constructor(private http:HttpClient) { }
 
