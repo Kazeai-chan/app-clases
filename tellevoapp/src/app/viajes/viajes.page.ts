@@ -13,8 +13,8 @@ export class ViajesPage implements OnInit {
   usuario: any;
 
   constructor(
-    private activatedRoute: ActivatedRoute
-    ,private authservice: AuthService
+    //private activatedRoute: ActivatedRoute,
+    private authservice: AuthService
     , private router: Router) {
     this.usuario=this.authservice.user;
     if(this.usuario!){

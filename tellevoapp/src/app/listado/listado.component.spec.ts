@@ -13,7 +13,6 @@ describe('ListadoComponent', () => {
     TestBed.configureTestingModule({
       //declarations: [ ListadoComponent ],
       imports: [IonicModule.forRoot(),HttpClientTestingModule],
-      providers:[RouterTestingModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(ListadoComponent);

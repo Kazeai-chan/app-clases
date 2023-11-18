@@ -25,7 +25,7 @@ export class HomePage {
   usuario:any;
 
   constructor(
-    private activatedRoute: ActivatedRoute, 
+    // private activatedRoute: ActivatedRoute, 
     private router: Router, 
     private animationCtrl: AnimationController, 
     private navCtrl: NavController ,
