@@ -14,16 +14,11 @@ export class VehiculosPage implements OnInit {
 
   viajes:any;
   viajeUsu:any;
-  usuario:any={
-    id:null,
-    name:"",
-    user:"",
-    email:"",
-    comuna:"",
-  }
+  user:any;
+  nombre:any;
   viaje:any={
     id:null,
-    usuario:"",
+    usuario:this.authservice.nombre,
     comuna:"",
     direccion:"",
     hora:"",
@@ -38,9 +33,11 @@ export class VehiculosPage implements OnInit {
     ,private authservice: AuthService
     , private router: Router) 
     { 
-      this.usuario.user=this.authservice.user;
-      if(this.usuario.user!){
-        console.log(this.usuario.user)
+      this.user=this.authservice.user;
+      this.viaje.usuario=this.authservice.nombre;
+      if(this.user!){
+        console.log(this.user);
+        console.log(this.viaje.usuario);
       } else {
         this.router.navigate(['/login']); // Si no tiene extras, navega a la página de inicio de sesión
       }
@@ -59,19 +56,9 @@ export class VehiculosPage implements OnInit {
     }
   }
 
-  traeNombre(){
-    this.usuario.user=this.authservice.user;
-    console.log(this.usuario.user)
-    this.api.getUsuario(this.usuario.user).subscribe((res)=>{
-      this.usuario=res;
-    },(error)=>{ 
-      console.log(error); 
-  });
-  }
-
   createViaje(){ 
     if(this.viaje.id==null){
-      this.viaje.usuario = this.usuario.nombre
+      this.viaje.usuario = this.authservice.nombre
       if(this.viaje.usuario!
         &&this.viaje.comuna!
         &&this.viaje.direccion!
@@ -103,26 +90,18 @@ export class VehiculosPage implements OnInit {
       });
     }
   }
-
-  // var newData = filterData('Mumbai');
-
-  // function filterData(locationName) {
-  //   return data.filter(object => {
-  //     return object['name'] == locationName;
-  //   });
-  // }
   
 
   getViajes(){
-    this.traeNombre()
+    //this.traeNombre()
     this.api.getViajes().subscribe((res)=>{
       // this.viajes=res.filter(item => {
       this.viajes = res.filter( (row:any) => {
-        if(row.usuario == this.usuario.nombre) {
-          console.log('prueba:'+row.usuario);
+        if(row.usuario == this.authservice.nombre) {
+          //console.log('prueba:'+row.usuario);
           return true
         } else {
-          console.log('prueba:'+row.usuario+' vs '+this.usuario.nombre);
+          //console.log('prueba:'+row.usuario+' vs '+this.authservice.nombre);
           return false;
         }
       });

@@ -6,6 +6,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
 import { ApiService } from '../api.service';
 import { AlertController } from '@ionic/angular';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-listado',
@@ -33,16 +34,30 @@ export class ListadoComponent  implements OnInit {
     precio:"",
   };
 
-  constructor(private api: ApiService, public alertController: AlertController) { }
+
+  constructor(private api: ApiService,
+    public alertController: AlertController,
+    private authservice: AuthService,
+    ) { }
   ionViewWillEnter(){
+    //console.log('nombre user:'+this.usuario.nombre)
     this.getViajes();
   }
 
   ngOnInit() {}
 
   getViajes(){
+    //console.log('su nombre es: '+this.authservice.nombre)
     this.api.getViajes().subscribe((res)=>{
-      this.viajes=res;
+      this.viajes = res.filter( (row:any) => {
+        if(row.usuario != this.authservice.nombre) {
+          //console.log('prueba:'+row.usuario);
+          return true
+        } else {
+          //console.log('prueba:'+row.usuario+' vs '+this.authservice.nombre);
+          return false;
+        }
+      });
       this.viajes.reverse();
     },(error)=>{ 
       console.log(error); 

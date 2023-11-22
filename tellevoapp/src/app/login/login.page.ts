@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras} from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { AuthService } from '../auth.service';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-login',
@@ -18,18 +19,20 @@ export class LoginPage implements OnInit {
   constructor(
     private router: Router,
     public alertController: AlertController,
-    public authservice: AuthService
+    public authservice: AuthService,
+    private api: ApiService,
   ) {}
 
   ngOnInit() {
-    // Obtén la lista de alumnos del servicio y utiliza el primer elemento
-    // const firstAlumno = this.authservice.getAlumnos()[0];
-    // this.alumnos.username = firstAlumno.username;
-    // this.alumnos.password = firstAlumno.password;
   }
 
   ingresar() {
     if (this.valida() === true) {
+      this.api.getUsuario(this.alumnos.username).subscribe((res)=>{
+        this.authservice.guardaDatos(res.nombre,res.email,res.comuna);
+      },(error)=>{ 
+        console.log(error); 
+      });
       this.router.navigate(['/home'])
     }
   }
