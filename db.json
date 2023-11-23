@@ -13,6 +13,13 @@
       "nombre": "Ignacio Ramos",
       "email": "nacho@duocuc.cl",
       "comuna": "La Florida"
+    },
+    {
+      "id": "Robert",
+      "iduser": 3,
+      "nombre": "Roberto Wimmer",
+      "email": "rober@duocuc.cl",
+      "comuna": "San Miguel"
     }
   ],
   "viajes": [
@@ -65,6 +72,24 @@
       "puestos": 2,
       "libres": 1,
       "precio": 5000
+    }
+  ],
+  "vehiculos": [
+    {
+      "id": "Vale",
+      "id_auto": "1",
+      "marca": "Toyota",
+      "patente": "THTV43",
+      "modelo": "Yaris",
+      "tipo": "auto"
+    },
+    {
+      "id": "Robert",
+      "id_auto": "2",
+      "marca": "Hyundai",
+      "patente": "PSYH98",
+      "modelo": "Accent",
+      "tipo": "auto"
     }
   ]
 }

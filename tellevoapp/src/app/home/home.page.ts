@@ -4,6 +4,7 @@ import type { Animation } from '@ionic/angular';
 import { AnimationController, IonCard } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
 import { AuthService } from '../auth.service';
+import { ApiService } from '../api.service';
 
 
 @Component({
@@ -23,29 +24,31 @@ export class HomePage {
   user: any;
   data: any; // Generamos una variable Any (permite cualquier valor)
   usuario:any;
+  autos:any;
+  segment:any;
+  aut:any;
+
 
   constructor(
     // private activatedRoute: ActivatedRoute, 
     private router: Router, 
     private animationCtrl: AnimationController, 
     private navCtrl: NavController ,
-    private authservice: AuthService) {
-    // Se llama a la ruta activa y se obtienen sus parámetros mediante una suscripción
-    //this.activatedRoute.queryParams.subscribe(params => {
-      // if (this.router.getCurrentNavigation()?.extras.state) { // Utilizamos el operador '?'
-      //   this.data = this.router.getCurrentNavigation()?.extras.state; // Utilizamos el operador '?'
-      //   this.user = this.data.user;
-      //   console.log(this.data); // Muestra por consola lo que se trajo
+    private api: ApiService,
+    private authservice: AuthService
+    ){
       this.usuario=this.authservice.user;
       if(this.usuario!){
-        console.log(this.data)
+        console.log(this.usuario)
       } else {
         this.router.navigate(['/login']); // Si no tiene extras, navega a la página de inicio de sesión
       }
-    //});
-  }
+    }
+
   ionViewWillEnter(){
     this.usuario=this.authservice.user;
+    this.buscaAutos()
+    this.buscaAuto()
   }
 
   ngAfterViewInit() {
@@ -90,6 +93,36 @@ export class HomePage {
 
   botonVehiculos(){
     this.router.navigate(['/vehiculos']);
+  }
+  botonAuto(){
+    this.router.navigate(['/agre-auto']);
+  }
+
+
+  buscaAutos(){
+    this.api.getVehiculos().subscribe((res)=>{
+      this.autos = res.filter( (row:any) => {
+        if(row.id == this.usuario) {
+          console.log('correcto:'+row.id);
+          return true
+        } else {
+          console.log('error:'+row.id);
+          return false;
+        }
+      });
+      //this.authservice.guardaAutos(res);
+    },(error)=>{ 
+      console.log(error); 
+    });
+  }
+
+  buscaAuto(){
+    this.api.getVehiculo(this.usuario).subscribe((res)=>{
+      this.aut=res.tipo;
+      this.segment=res.tipo;
+    },(error)=>{ 
+      console.log(error); 
+    });
   }
 
 }

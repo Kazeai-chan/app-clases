@@ -51,4 +51,22 @@ export class ApiService {
     return this.http.delete(this.apiURL+'/viajes/'+id,this.httpOptions); 
   }
 
+  getVehiculos():Observable<any>{ 
+    return this.http.get(this.apiURL+'/vehiculos').pipe( 
+      retry(3) 
+    ); 
+  };
+
+  getVehiculo(id:string):Observable<any>{ 
+    return this.http.get(this.apiURL+'/vehiculos/'+id).pipe( 
+      retry(3) 
+    ); 
+  };
+
+  createVehiculo(post: string):Observable<any>{ 
+    return this.http.post(this.apiURL+'/vehiculos',post,this.httpOptions) 
+    .pipe( retry(3) 
+    )
+  };
+
 }

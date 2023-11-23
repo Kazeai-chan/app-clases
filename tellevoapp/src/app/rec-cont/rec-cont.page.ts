@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Router, NavigationExtras } from '@angular/router';
 import { AuthService } from '../auth.service';
+//import { EmailComposer } from '@ionic-native/email-composer';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class RecContPage {
     private navCtrl: NavController,
     private router: Router,
     private authservice: AuthService,
+    //private emailComposer: typeof EmailComposer,
   ){}
   
 
@@ -26,11 +28,19 @@ export class RecContPage {
 
   redireccionarALogin() {
     this.authservice.guardaUser(this.usuario)
+    // this.emailComposer.isAvailable().then((available: boolean) =>{
+    //   if(available) {
+    //     this.sendMail();
+    //   }
+    //  });
     this.router.navigate(['/login']);
   }
 
+
   ngOnInit() {
   }
+
+  
 
 }
 

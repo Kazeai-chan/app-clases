@@ -19,33 +19,8 @@
       <ion-card-subtitle>Estudiante: {{usuario}}</ion-card-subtitle>
     </ion-card-header>
   </ion-card>
-  <mat-grid-list cols="2" rowHeight="2:4" >
-    <mat-grid-tile>
-      <mat-card #aniUno style="max-width: 90%; margin-bottom: 8px; margin-left: 8px;" color="primary">
-        <mat-card-header >
-          <div mat-card-avatar style="display: flex; justify-content: center;">
-            <button (click)="botonVehiculos()" mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon">
-              <mat-icon>directions_car</mat-icon>
-            </button>
-          </div>
-          <mat-card-title>Programar viaje de retorno</mat-card-title>
-          <mat-card-subtitle>Vehículo propio</mat-card-subtitle>
-        </mat-card-header>
-      
-        <mat-card-content>
-          <img mat-card-image style="object-fit: cover;" src="https://img.freepik.com/fotos-premium/automoviles-estacionados-fila-lado-calle-ciudad-brillante-dia-otono_127089-12533.jpg" alt="Vehiculo">
-          <p>
-            Si cuenta con un vehículo propio puede ingresar la dirección de su viaje y el costo que
-            cobrará a las personas que llevará.
-          </p>
-        </mat-card-content>
-        <!-- <mat-card-actions>
-          <button mat-button>LIKE</button>
-          <button mat-button>SHARE</button>
-        </mat-card-actions> -->
-      </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile #ani2>
+  <mat-grid-list cols="2" rowHeight="2:4" [ngSwitch]="segment">
+    <mat-grid-tile #aniUno>
       <mat-card style="max-width: 90%; margin-bottom: 8px; margin-left: 8px;" color="primary">
         <mat-card-header >
           <div mat-card-avatar style="display: flex; justify-content: center">
@@ -63,12 +38,60 @@
             de su dirección para compartir vehículo.
           </p>
         </mat-card-content>
-        <!-- <mat-card-actions>
-          <button mat-button>LIKE</button>
-          <button mat-button>SHARE</button>
-        </mat-card-actions> -->
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile #ani2>
+      <mat-card *ngSwitchCase="'auto'" style="max-width: 90%; margin-bottom: 8px; margin-left: 8px;" color="primary">
+        <mat-card-header >
+          <div mat-card-avatar style="display: flex; justify-content: center;">
+            <button (click)="botonVehiculos()" mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon">
+              <mat-icon>directions_car</mat-icon>
+            </button>
+          </div>
+          <mat-card-title>Programar viaje de retorno</mat-card-title>
+          <mat-card-subtitle>Vehículo propio</mat-card-subtitle>
+        </mat-card-header>
+      
+        <mat-card-content>
+          <img mat-card-image style="object-fit: cover;" src="https://img.freepik.com/fotos-premium/automoviles-estacionados-fila-lado-calle-ciudad-brillante-dia-otono_127089-12533.jpg" alt="Vehiculo">
+          <p>
+            Si cuenta con un vehículo propio puede ingresar la dirección de su viaje y el costo que
+            cobrará a las personas que llevará.
+          </p>
+        </mat-card-content>
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>  
+  <container-element [ngSwitch]="aut">
+    <ion-card *ngSwitchCase="'auto'">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title class="ion-text-center">
+            Tu Vehiculo
+          </ion-card-title>
+        </ion-card-header>
+      </ion-card>
+      <mat-card *ngFor="let auto of autos">
+        <mat-card-content>
+          <ion-grid>
+            <ion-row>
+              <ion-col><img alt="autito" src="https://cdn.icon-icons.com/icons2/577/PNG/256/ExecutiveCar_Black_icon-icons.com_54904.png"/></ion-col>
+              <ion-col>
+                <div>
+                  <p>Marca: {{auto.marca}}</p>
+                  <p>Patente: {{auto.patente}}</p>
+                  <p>Modelo: {{auto.modelo}}</p>
+                  <p>Tipo: {{auto.tipo}}</p>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </mat-card-content>
+      </mat-card>
+    </ion-card>
+    <ion-card *ngSwitchCase="">
+      <button mat-raised-button (click)="botonAuto()" color="primary" style="width : 100%;">Agregar Vehiculo</button>
+    </ion-card>
+  </container-element>
   
 </ion-content>

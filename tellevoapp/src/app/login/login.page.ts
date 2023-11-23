@@ -16,6 +16,7 @@ export class LoginPage implements OnInit {
     username: 'Vale', // Inicializa con un valor predeterminado
     password: '12345', // Inicializa con un valor predeterminado
   };
+  autos:any;
   hide = true;
 
   constructor(
@@ -42,6 +43,7 @@ export class LoginPage implements OnInit {
   valida() {
     if (this.alumnos.username.trim().length > 3 && this.alumnos.password.trim().length > 4) {
       this.authservice.guardaAlumno(this.alumnos.username,this.alumnos.password);
+      //this.authservice.getAutos();
       return true;
     } else {
       this.presentAlert('Error', 'Debe ingresar un nombre de usuario y una contraseña válida');

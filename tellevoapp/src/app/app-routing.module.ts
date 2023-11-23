@@ -31,8 +31,11 @@ const routes: Routes = [
     path: 'vehiculos',
     loadChildren: () => import('./vehiculos/vehiculos.module').then( m => m.VehiculosPageModule)
   },
+  {
+    path: 'agre-auto',
+    loadChildren: () => import('./agre-auto/agre-auto.module').then( m => m.AgreAutoPageModule)
+  },
   { path: '**', component: PageNotFoundComponent },
-
 
 ];
 

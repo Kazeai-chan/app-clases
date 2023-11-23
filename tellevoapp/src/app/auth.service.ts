@@ -1,23 +1,40 @@
 import { Injectable } from '@angular/core';
+import { IonList } from '@ionic/angular';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  constructor(private api:ApiService){}
 
   public alumnos = [
     { username: 'Vale', password: '12345' },
     { username: 'Nacho', password: '12345' },
+    { username: 'Robert', password: '12345' },
   ];
   public user:any;
   contra:any;
-  nombre:any;
-  email:any;
-  comuna:any;
+  public nombre:any;
+  public email:any;
+  public comuna:any;
+  public vehiculo:any;
+  public vehiculos:any;
 
   getAlumnos() {
     return this.alumnos;
   }
+
+  getAutos(){
+    this.api.getVehiculo(this.user).subscribe((res)=>{
+      this.vehiculo=res.tipo;
+      console.log(this.vehiculo)
+    },(error)=>{ 
+      console.log(error); 
+    });
+  }
+
+
 
   guardaAlumno(user:string,psw:string){
     this.user=user;
@@ -33,6 +50,10 @@ export class AuthService {
     this.nombre = nom;
     this.email = mail;
     this.comuna = comun;
+  }
+
+  guardaAutos(paten:string){
+    this.vehiculo=paten;
   }
 
   validaUser(){
