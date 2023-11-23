@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationExtras} from '@angular/router';
+import { ApiService } from '../api.service';
+import { Router} from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { AuthService } from '../auth.service';
-import { ApiService } from '../api.service';
+
+
 
 @Component({
   selector: 'app-login',

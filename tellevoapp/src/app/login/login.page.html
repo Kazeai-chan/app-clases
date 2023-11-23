@@ -1,49 +1,49 @@
 <ion-header>
-    <mat-toolbar color="primary">
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span>Te Llevo App</span>
-    </mat-toolbar>
+  <mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Te Llevo App</span>
+  </mat-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" style="--ion-background-color : #f2f2f2;">
-  <ion-card style="--ion-background-color : white;">
-    <ion-card-header class="ion-text-center">
-      <ion-card-title>¡Bienvenido!</ion-card-title>
-      <ion-card-subtitle>La mejor app para compartir vehículos</ion-card-subtitle>
-    </ion-card-header>
-    <ion-card-content style="display: flex; justify-content: center;">
-      <ion-img responsive-sm style="width:80%"
-        src="https://www.mitsubishi-motors.com.pe/blog/wp-content/uploads/2020/06/auto-hatchbak-ventajas-mitsubishi.jpg"
-        alt="auto"
-      ></ion-img>
-    </ion-card-content>
-  </ion-card>
-  <ion-card style="--ion-background-color : white;">
-    <ion-card-content>
-      <ion-text><h2>Para usar nuestros servicios primero debe iniciar sesión</h2></ion-text>
+<ion-card style="--ion-background-color : white;">
+  <ion-card-header class="ion-text-center">
+    <ion-card-title>¡Bienvenido!</ion-card-title>
+    <ion-card-subtitle>La mejor app para compartir vehículos</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content style="display: flex; justify-content: center;">
+    <ion-img responsive-sm style="width:80%"
+      src="https://www.mitsubishi-motors.com.pe/blog/wp-content/uploads/2020/06/auto-hatchbak-ventajas-mitsubishi.jpg"
+      alt="auto"
+    ></ion-img>
+  </ion-card-content>
+</ion-card>
+<ion-card style="--ion-background-color : white;">
+  <ion-card-content>
+    <ion-text><h2>Para usar nuestros servicios primero debe iniciar sesión</h2></ion-text>
 
-      <mat-form-field style="display: flex; justify-content: center;">
-        <mat-label>Usuario</mat-label>
-        <input matInput 
-        [(ngModel)]="alumnos.username"
-        maxlength="12"
-        minlength="3"
-        errorText="Ingrese más de 3 caracteres">
-      </mat-form-field>
-      
+    <mat-form-field style="display: flex; justify-content: center;">
+      <mat-label>Usuario</mat-label>
+      <input matInput 
+      [(ngModel)]="alumnos.username"
+      maxlength="12"
+      minlength="3"
+      errorText="Ingrese más de 3 caracteres">
+    </mat-form-field>
+    
 
-      <mat-form-field style="display: flex; justify-content: center;">
-        <mat-label>Ingrese su contraseña</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="alumnos.password" minlength="4">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-      </mat-form-field>
+    <mat-form-field style="display: flex; justify-content: center;">
+      <mat-label>Ingrese su contraseña</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="alumnos.password" minlength="4">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
 
-      <button mat-raised-button color="primary" style="width : 100%;" (click)="ingresar()">Ingresar</button>
-      <a href="javascript:void(0);" (click)="recupera()" style="display: flex; justify-content: center;">Recuperar contraseña</a>
-    </ion-card-content>
-  </ion-card>
+    <button mat-raised-button color="primary" style="width : 100%;" (click)="ingresar()">Ingresar</button>
+    <a href="javascript:void(0);" (click)="recupera()" style="display: flex; justify-content: center;">Recuperar contraseña</a>
+  </ion-card-content>
+</ion-card>
 </ion-content>
