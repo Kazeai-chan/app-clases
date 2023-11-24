@@ -1,12 +1,14 @@
 import { TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HomeGuard } from './home.guard';
 
 describe('HomeGuard', () => {
   let guard: HomeGuard;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports:[HttpClientTestingModule]
+    });
     guard = TestBed.inject(HomeGuard);
   });
 

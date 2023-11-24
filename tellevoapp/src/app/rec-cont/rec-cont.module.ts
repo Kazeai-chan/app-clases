@@ -23,7 +23,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
-    MatToolbarModule
+    MatToolbarModule,
   ],
   declarations: [RecContPage]
 })
