@@ -4,14 +4,14 @@
       "id": "Vale",
       "iduser": 1,
       "nombre": "Valeria Hernandez",
-      "email": "vale@duocuc.cl",
+      "email": "val.hernandezg@duocuc.cl",
       "comuna": "Santiago"
     },
     {
       "id": "Nacho",
       "iduser": 2,
       "nombre": "Ignacio Ramos",
-      "email": "nacho@duocuc.cl",
+      "email": "ign.ramosr@duocuc.cl",
       "comuna": "La Florida"
     },
     {
@@ -26,26 +26,32 @@
     {
       "id": 1,
       "usuario": "Juan Perez",
+      "user": "juan",
+      "correo": "juan@duocuc.cl",
       "comuna": "San Bernardo",
       "direccion": "San Pablo 335",
       "hora": "20:00",
       "puestos": 4,
-      "libres": 4,
+      "libres": 0,
       "precio": 5000
     },
     {
       "id": 2,
       "usuario": "María Prado",
+      "user": "maria",
+      "correo": "maria@duocuc.cl",
       "comuna": "La Florida",
       "direccion": "francisco juan 556",
       "hora": "15:30",
       "puestos": 3,
-      "libres": 3,
+      "libres": 0,
       "precio": 4000
     },
     {
       "id": 3,
-      "usuario": "Juan",
+      "usuario": "Juan Gonzalez",
+      "user": "juang",
+      "correo": "juan@duocuc.cl",
       "comuna": "Las Condes",
       "direccion": "San Martin",
       "hora": "13:20",
@@ -56,21 +62,37 @@
     {
       "id": 4,
       "usuario": "Valeria Hernandez",
+      "user": "Vale",
+      "correo": "val.hernandezg@duocuc.cl",
       "comuna": "Santiago",
       "direccion": "San 89",
       "hora": "13:30",
       "puestos": 3,
-      "libres": 2,
+      "libres": 4,
       "precio": 5000
     },
     {
       "id": 5,
       "usuario": "Ignacio Ramos",
+      "user": "Nacho",
+      "correo": "ign.ramosr@duocuc.cl",
       "comuna": "San Miguel",
       "direccion": "blabla 30",
       "hora": "01:00",
       "puestos": 2,
-      "libres": 1,
+      "libres": 4,
+      "precio": 5000
+    },
+    {
+      "id": 6,
+      "usuario": "Valeria Hernandez",
+      "user": "Vale",
+      "correo": "val.hernandezg@duocuc.cl",
+      "comuna": "Santiago",
+      "direccion": "San Martin 800",
+      "hora": "13:20",
+      "puestos": 3,
+      "libres": 3,
       "precio": 5000
     }
   ],

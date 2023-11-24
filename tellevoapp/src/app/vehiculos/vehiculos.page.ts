@@ -19,6 +19,8 @@ export class VehiculosPage implements OnInit {
   viaje:any={
     id:null,
     usuario:this.authservice.nombre,
+    user:this.authservice.user,
+    correo:this.authservice.email,
     comuna:"",
     direccion:"",
     hora:"",
@@ -35,6 +37,8 @@ export class VehiculosPage implements OnInit {
     { 
       this.user=this.authservice.user;
       this.viaje.usuario=this.authservice.nombre;
+      this.viaje.user=this.authservice.user;
+      this.viaje.correo=this.authservice.email;
       if(this.user!){
         console.log(this.user);
         console.log(this.viaje.usuario);
@@ -62,6 +66,8 @@ export class VehiculosPage implements OnInit {
     const maxPrecio = 10000;
     if(this.viaje.id==null){
       this.viaje.usuario = this.authservice.nombre
+      this.viaje.user=this.authservice.user;
+      this.viaje.correo=this.authservice.email;
       if(this.viaje.usuario!
         &&this.viaje.comuna!
         && letrasComuna.test(this.viaje.comuna)
@@ -72,6 +78,7 @@ export class VehiculosPage implements OnInit {
         &&this.viaje.precio!
         &&this.viaje.precio <= maxPrecio){
         this.viaje.libres=this.viaje.puestos;
+        
         this.api.createViaje(this.viaje).subscribe((success)=>{
           console.log(success); 
           this.limpiar();
