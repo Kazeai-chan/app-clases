@@ -37,12 +37,15 @@
         </ion-input>
       </ion-item>
       <ion-item>
-        <ion-input
-          label="Marca" 
-          class="ion-text-end"
-          [(ngModel)]="vehiculo.marca"
-          placeholder="Ingrese marca">
-        </ion-input>
+        <ion-label>Marca</ion-label>
+        <ion-select [(ngModel)]="vehiculo.marca" interface="popover" placeholder="Marca">
+          <ion-select-option value="Hyundai">Hyundai</ion-select-option>
+          <ion-select-option value="BMW">BMW</ion-select-option>
+          <ion-select-option value="Chevrolet">Chevrolet</ion-select-option>
+          <ion-select-option value="Chery">Chery</ion-select-option>
+          <ion-select-option value="Fiat">Fiat</ion-select-option>
+          <ion-select-option value="Ford">Ford</ion-select-option>
+        </ion-select>
       </ion-item>
       <ion-item>
         <ion-input

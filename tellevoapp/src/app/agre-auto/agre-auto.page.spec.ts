@@ -5,11 +5,11 @@ describe('AgreAutoPage', () => {
   let component: AgreAutoPage;
   let fixture: ComponentFixture<AgreAutoPage>;
 
-  beforeEach(async(() => {
+  beforeEach(async() => {
     fixture = TestBed.createComponent(AgreAutoPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  }));
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();

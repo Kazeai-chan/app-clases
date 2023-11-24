@@ -39,8 +39,10 @@ export class AgreAutoPage implements OnInit {
 
   createViaje(){ 
     this.vehiculo.id = this.authservice.user
+    const validacionPatente=/^[^\s]{6}$/;
     if(this.vehiculo.marca!
       &&this.vehiculo.patente!
+      && validacionPatente.test(this.vehiculo.patente)
       &&this.vehiculo.modelo!){
       this.api.createVehiculo(this.vehiculo).subscribe((success)=>{
         console.log(success); 
@@ -52,7 +54,7 @@ export class AgreAutoPage implements OnInit {
       });
     }else{
       console.log(this.vehiculo);
-      this.presentAlert("Error","Debe llenar todos los campos")
+      this.presentAlert("Error","Debe llenar todos los campos o ingresar datos válidos")
     }
   }
 

@@ -57,14 +57,20 @@ export class VehiculosPage implements OnInit {
   }
 
   createViaje(){ 
+    const letrasComuna = /^[A-Za-z]+$/;
+    const maxPuestos = /^\d{1,2}$/;
+    const maxPrecio = 10000;
     if(this.viaje.id==null){
       this.viaje.usuario = this.authservice.nombre
       if(this.viaje.usuario!
         &&this.viaje.comuna!
+        && letrasComuna.test(this.viaje.comuna)
         &&this.viaje.direccion!
         &&this.viaje.hora!
         &&this.viaje.puestos!
-        &&this.viaje.precio!){
+        && maxPuestos.test(this.viaje.puestos)
+        &&this.viaje.precio!
+        &&this.viaje.precio <= maxPrecio){
         this.viaje.libres=this.viaje.puestos;
         this.api.createViaje(this.viaje).subscribe((success)=>{
           console.log(success); 
@@ -76,7 +82,7 @@ export class VehiculosPage implements OnInit {
         });
       }else{
         console.log(this.viaje);
-        this.presentAlert("Error","Debe llenar todos los campos")
+        this.presentAlert("Error","Debe llenar todos los campos o ingresar datos válidos")
       }
     }else{
       this.viaje.libres=this.viaje.puestos;
