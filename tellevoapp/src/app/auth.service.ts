@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IonList } from '@ionic/angular';
 import { ApiService } from './api.service';
+import { Preferences } from '@capacitor/preferences';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,7 @@ export class AuthService {
   public comuna:any;
   public vehiculo:any;
   public vehiculos:any;
+  public patente:any;
 
   getAlumnos() {
     return this.alumnos;
@@ -29,6 +31,7 @@ export class AuthService {
     this.api.getVehiculo(this.user).subscribe((res)=>{
       this.vehiculo=res.tipo;
       console.log(this.vehiculo)
+      //this.setPatente(res.patente);
     },(error)=>{ 
       console.log(error); 
     });
@@ -39,6 +42,9 @@ export class AuthService {
   guardaAlumno(user:string,psw:string){
     this.user=user;
     this.contra=psw;
+    this.setName(user);
+    //this.comuna = Preferences.get({ key: 'name' });
+    //console.log(`Hello ${this.comuna}!`);
     //console.log(this.user)
   }
 
@@ -46,8 +52,50 @@ export class AuthService {
     this.user=user;
   }
 
+  async setName(usa:string){
+    await Preferences.set({
+      key: 'name',
+      value: usa,
+    });
+  };
+
+  async setDatos(nom:string){
+    await Preferences.set({
+      key: 'nombre',
+      value: nom,
+    });
+  };
+
+  async setPatente(pat:string){
+    await Preferences.set({
+      key: 'patente',
+      value: pat,
+    });
+  };
+
+  async checkName(){
+    const { value } = await Preferences.get({ key: 'name' });
+    console.log(`Hello ${value}!`);
+    return value;
+  };
+
+  async checkPatente(){
+    const { value } = await Preferences.get({ key: 'patente' });
+    console.log(`Patente ${value}!`);
+    this.patente = value;
+    return value;
+  };
+
+  async checkNombre(){
+    const { value } = await Preferences.get({ key: 'nombre' });
+    this.nombre = value;
+    return value;
+  };
+
   guardaDatos(nom:string,mail:string,comun:string){
-    this.nombre = nom;
+    this.setDatos(nom);
+    this.checkNombre();
+    //this.nombre = nom;
     this.email = mail;
     this.comuna = comun;
   }
@@ -65,6 +113,8 @@ export class AuthService {
       return false;
     };
   };
+
+  
 
 
 }

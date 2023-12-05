@@ -28,6 +28,7 @@ export class VehiculosPage implements OnInit {
     libres:"",
     precio:"",
   };
+  patente:any;
 
   constructor(
     private api: ApiService
@@ -39,6 +40,7 @@ export class VehiculosPage implements OnInit {
       this.viaje.usuario=this.authservice.nombre;
       this.viaje.user=this.authservice.user;
       this.viaje.correo=this.authservice.email;
+      this.patente=this.authservice.checkPatente();
       if(this.user!){
         console.log(this.user);
         console.log(this.viaje.usuario);
@@ -50,6 +52,7 @@ export class VehiculosPage implements OnInit {
 
   ionViewWillEnter(){
     this.getViajes();
+    this.patente=this.authservice.patente;
   }
 
   ngOnInit() {
@@ -57,6 +60,7 @@ export class VehiculosPage implements OnInit {
   limpiar(){
     for (var [key, value] of Object.entries(this.viaje)) {
       Object.defineProperty(this.viaje,key,{value:""})
+      this.viaje.usuario=this.authservice.nombre
     }
   }
 
@@ -83,7 +87,8 @@ export class VehiculosPage implements OnInit {
           console.log(success); 
           this.limpiar();
           this.getViajes();
-          this.presentAlert("Correcto","Viaje guardado")
+          //this.authservice.checkPatente();
+          this.presentAlert("Correcto","Viaje en auto "+this.authservice.patente+" ha sido guardado")
         },error=>{ 
           console.log(error); 
         });

@@ -5,6 +5,7 @@ import { AnimationController, IonCard } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
 import { AuthService } from '../auth.service';
 import { ApiService } from '../api.service';
+import { Preferences } from '@capacitor/preferences';
 
 
 @Component({
@@ -24,6 +25,7 @@ export class HomePage {
   user: any;
   data: any; // Generamos una variable Any (permite cualquier valor)
   usuario:any;
+  usuar:any;
   autos:any;
   segment:any;
   aut:any;
@@ -47,6 +49,7 @@ export class HomePage {
 
   ionViewWillEnter(){
     this.usuario=this.authservice.user;
+    this.usuar=this.authservice.checkName();
     this.buscaAutos()
     this.buscaAuto()
   }
@@ -120,6 +123,7 @@ export class HomePage {
     this.api.getVehiculo(this.usuario).subscribe((res)=>{
       this.aut=res.tipo;
       this.segment=res.tipo;
+      this.authservice.setPatente(res.patente);
     },(error)=>{ 
       console.log(error); 
     });
