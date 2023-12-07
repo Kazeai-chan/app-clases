@@ -8,6 +8,7 @@ import { ApiService } from '../api.service';
 import { AlertController } from '@ionic/angular';
 import { AuthService } from '../auth.service';
 import { MailgunService } from '../mailgun.service'
+import { SharedDataService } from '../shared-data.service';
 
 
 
@@ -44,6 +45,7 @@ export class ListadoComponent  implements OnInit {
     public alertController: AlertController,
     private authservice: AuthService,
     private mailgunService: MailgunService,
+    private shareDataService: SharedDataService
     ) { }
   ionViewWillEnter(){
     //console.log('nombre user:'+this.usuario.nombre)
@@ -88,6 +90,11 @@ export class ListadoComponent  implements OnInit {
       console.log('dueño: '+this.viaje.correo)
     }
       
+  }
+
+  activaMaps(direccion: string){
+    this.shareDataService.setDireccionFinal(direccion);
+    console.log(direccion)
   }
 
 

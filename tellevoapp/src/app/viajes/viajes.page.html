@@ -22,18 +22,19 @@
     <p>Usuario: {{ usuario }} </p>
 
   </ion-card>
-  <ion-segment [(ngModel)]="segment" value="default">
-    <ion-segment-button value="lista">
+  <ion-segment [(ngModel)]="segment" value="lista">
+    <ion-segment-button (click)="recargarViajes()" value="lista">
       <ion-label>Listado</ion-label>
       <ion-icon name="list"></ion-icon>
     </ion-segment-button>
-    <ion-segment-button value="map" [disabled]="true">
+    <ion-segment-button value="mapa2" [disabled]="false">
       <ion-label>Mapa (en construcción)</ion-label>
       <ion-icon name="map"></ion-icon>
     </ion-segment-button>
   </ion-segment>
   <container-element [ngSwitch]="segment">
     <app-listado *ngSwitchCase="'lista'"></app-listado>
+    <app-mapa2 *ngSwitchCase="'mapa2'"></app-mapa2> <!-- Agrega esta línea -->
   </container-element>
 </ion-content>
 

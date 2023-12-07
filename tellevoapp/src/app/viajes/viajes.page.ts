@@ -4,6 +4,7 @@ import { ListadoComponent } from '../listado/listado.component';
 import { AuthService } from '../auth.service';
 import { Geolocation } from '@capacitor/geolocation';
 
+
 @Component({
   selector: 'app-viajes',
   templateUrl: './viajes.page.html',
@@ -31,6 +32,10 @@ export class ViajesPage implements OnInit {
     this.usuario=this.authservice.user;
     this.listado.getViajes();
     this.printCurrentPosition()
+  }
+
+  recargarViajes(){
+    this.listado.getViajes();
   }
 
   ngOnInit() {

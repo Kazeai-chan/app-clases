@@ -12,6 +12,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { ListadoComponent } from '../listado/listado.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Mapa2PageModule } from '../mapa2/mapa2.module';
 
 @NgModule({
   imports: [
@@ -24,7 +26,9 @@ import { ListadoComponent } from '../listado/listado.component';
     MatCardModule,
     ViajesPageRoutingModule,
     ListadoComponent,
+    Mapa2PageModule,
   ],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
   declarations: [ViajesPage]
 })
 export class ViajesPageModule {}
