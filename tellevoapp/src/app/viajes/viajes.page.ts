@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router'; // Importa ActivatedRoute
 import { ListadoComponent } from '../listado/listado.component';
 import { AuthService } from '../auth.service';
+import { Geolocation } from '@capacitor/geolocation';
+
 
 @Component({
   selector: 'app-viajes',
@@ -29,6 +31,11 @@ export class ViajesPage implements OnInit {
   ionViewWillEnter() {
     this.usuario=this.authservice.user;
     this.listado.getViajes();
+    this.printCurrentPosition()
+  }
+
+  recargarViajes(){
+    this.listado.getViajes();
   }
 
   ngOnInit() {
@@ -39,4 +46,9 @@ export class ViajesPage implements OnInit {
   VHome(){
     this.router.navigate(['/home']);
   }
+
+  async printCurrentPosition(){
+    const coordinates = await Geolocation.getCurrentPosition();
+    console.log('Current position:', coordinates);
+  };
 }

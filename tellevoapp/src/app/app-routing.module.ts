@@ -36,6 +36,10 @@ const routes: Routes = [
     loadChildren: () => import('./agre-auto/agre-auto.module').then( m => m.AgreAutoPageModule)
   },
   { path: '**', component: PageNotFoundComponent },
+  {
+    path: 'mapa2',
+    loadChildren: () => import('./mapa2/mapa2.module').then( m => m.Mapa2PageModule)
+  },
 
 ];
 

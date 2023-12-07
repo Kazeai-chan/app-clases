@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ViajesPage } from './viajes.page';
 import { ListadoComponent } from '../listado/listado.component';
+import { Mapa2Page } from '../mapa2/mapa2.page';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
       {
         path: 'listado', // child route path
         component: ListadoComponent, // child route component that the router renders
+      },
+      {
+        path: 'mapa2', // Agrega esta ruta
+        component: Mapa2Page,
       },
     ]
   }
