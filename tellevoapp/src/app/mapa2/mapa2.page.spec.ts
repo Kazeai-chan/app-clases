@@ -5,11 +5,11 @@ describe('Mapa2Page', () => {
   let component: Mapa2Page;
   let fixture: ComponentFixture<Mapa2Page>;
 
-  beforeEach(async(() => {
+  beforeEach(async() => {
     fixture = TestBed.createComponent(Mapa2Page);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  }));
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();

@@ -41,7 +41,7 @@ export class ViajesPage implements OnInit {
   ngOnInit() {
   }
 
-  segment = 'lista';
+  public segment = 'lista';
 
   VHome(){
     this.router.navigate(['/home']);
@@ -51,4 +51,8 @@ export class ViajesPage implements OnInit {
     const coordinates = await Geolocation.getCurrentPosition();
     console.log('Current position:', coordinates);
   };
+
+  cambiaMapa(){
+    this.segment="mapa2"
+  }
 }

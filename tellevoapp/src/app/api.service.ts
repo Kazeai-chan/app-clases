@@ -15,7 +15,7 @@ export class ApiService {
     }) 
   }
   // Se establece la base url del API a consumir 
-  apiURL = 'http://localhost:3000';//'http://192.168.0.15:3000';
+  apiURL = 'http://localhost:3000';//https://fake-api-ruddy.vercel.app;
 
   constructor(private http:HttpClient) { }
 

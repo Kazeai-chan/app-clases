@@ -9,6 +9,7 @@ import { AlertController } from '@ionic/angular';
 import { AuthService } from '../auth.service';
 import { MailgunService } from '../mailgun.service'
 import { SharedDataService } from '../shared-data.service';
+import { ViajesPage } from '../viajes/viajes.page';
 
 
 
@@ -45,7 +46,8 @@ export class ListadoComponent  implements OnInit {
     public alertController: AlertController,
     private authservice: AuthService,
     private mailgunService: MailgunService,
-    private shareDataService: SharedDataService
+    private shareDataService: SharedDataService,
+    private ViajesP: ViajesPage,
     ) { }
   ionViewWillEnter(){
     //console.log('nombre user:'+this.usuario.nombre)
@@ -72,12 +74,14 @@ export class ListadoComponent  implements OnInit {
   });
   }
 
-  Reserva(viajee:any){
+  Reserva(direccion: string,viajee:any){
     this.viaje=viajee
     if(this.viaje.libres>0){
       this.viaje.libres=this.viaje.libres-1;
       this.api.updateViaje(this.viaje.id,this.viaje).subscribe((data)=>{
         //console.log(data); 
+        this.activaMaps(direccion);
+        this.ViajesP.cambiaMapa();
         this.getViajes();
         this.presentAlert("Correcto","Viaje reservado correctamente, se ha enviado un correo de confirmación")
         console.log(this.viaje.correo)
@@ -87,7 +91,6 @@ export class ListadoComponent  implements OnInit {
       });
     }else{
       this.presentAlert("Error","Sin cupos disponibles")
-      console.log('dueño: '+this.viaje.correo)
     }
       
   }

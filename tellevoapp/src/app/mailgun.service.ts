@@ -11,7 +11,7 @@ export class MailgunService {
 
   enviarCorreo(destinatario: string, asunto: string, contenido: string){
   //enviarCorreo(){
-    const apiKey = ''
+    const apiKey =  ''
     const domain = '';
     const mailgunApiUrl = `https://api.mailgun.net/v3/${domain}/messages`;
 
