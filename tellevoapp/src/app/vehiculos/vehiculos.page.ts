@@ -65,7 +65,7 @@ export class VehiculosPage implements OnInit {
   }
 
   createViaje(){ 
-    const letrasComuna = /^[A-Za-z]+$/;
+    const letrasComuna = /^[A-Za-z]+(?: [A-Za-z]+)?$/;
     const maxPuestos = /^\d{1,2}$/;
     const maxPrecio = 10000;
     if(this.viaje.id==null){

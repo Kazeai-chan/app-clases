@@ -95,6 +95,7 @@ export class ListadoComponent  implements OnInit {
       
   }
 
+
   activaMaps(direccion: string){
     this.shareDataService.setDireccionFinal(direccion);
     console.log(direccion)

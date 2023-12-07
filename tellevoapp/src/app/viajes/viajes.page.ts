@@ -36,6 +36,7 @@ export class ViajesPage implements OnInit {
 
   recargarViajes(){
     this.listado.getViajes();
+    this.segment="listado"
   }
 
   ngOnInit() {

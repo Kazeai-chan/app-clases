@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Geolocation } from '@capacitor/geolocation';
 import { SharedDataService } from '../shared-data.service';
+import { ViajesPage } from '../viajes/viajes.page';
 
 declare const google: any; // Declarar 'google' para evitar errores de tipo
 
@@ -14,8 +15,12 @@ export class Mapa2Page implements OnInit {
   map: any; // Variable para mantener la referencia al mapa
   currentLocationMarker: any; // Variable para el marcador de la ubicación actual
 
-  constructor(private sharedDataService: SharedDataService) { }
+  constructor(private sharedDataService: SharedDataService, private viajesPage: ViajesPage) { }
   direccionFinal: string = ''
+  
+  ejecutarVHome() {
+    this.viajesPage.VHome();
+  }
 
   ngOnInit() {
     this.createMap(); // Crear el mapa al inicializar la página
@@ -88,4 +93,6 @@ export class Mapa2Page implements OnInit {
       console.error('Error al colocar el marcador:', error);
     }
   }
+
+
 }
